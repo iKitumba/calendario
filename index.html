@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f75c90" />
+    <meta
+      name="description"
+      content="Este é um calendário simples e bonito em Português feito para quem não quer perder tempo procurando quando calha uma datas"
+    />
+    <meta
+      name="keywords"
+      content="Calendário, Calendar, Português, Data, Ano Novo, Simples"
+    />
+    <meta name="author" content="Alberto Dos Santos Kitumba" />
+    <meta http-equiv="content-language" content="pt-pt, pt, pt-br" />
+    <title>Calendário</title>
+    <link rel="stylesheet" href="./modules/js-year-calendar.min.css" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./modules/js-year-calendar.min.js"></script>
+  </head>
+  <body>
+    <div class="calendar"></div>
+
+    <script>
+      new Calendar(".calendar");
+    </script>
+    <script>
+      //day-content
+      const monthsCards = document.querySelectorAll(".month-container");
+      const [...yearsTitles] = document.querySelectorAll(".year-title");
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = now.getMonth();
+      const day = now.getDate();
+      const yearTitle = yearsTitles.find((yt) => yt.innerHTML == year);
+
+      if (yearTitle.innerHTML == year) {
+        const daysToMark = [
+          ...monthsCards[month].querySelectorAll(".day-content"),
+        ];
+        const dayToMark = daysToMark.find((dm) => dm.innerHTML == day);
+        dayToMark.classList.add("dayToMark");
+      }
+    </script>
+  </body>
+</html>
